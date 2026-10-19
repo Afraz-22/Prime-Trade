@@ -33,6 +33,7 @@
             'card': '0 4px 24px -4px rgba(15, 23, 42, 0.06)',
             'logo': '0 10px 30px -6px rgba(30, 58, 138, 0.14), 0 2px 6px -1px rgba(15, 23, 42, 0.05)',
             'glow': '0 10px 30px -5px rgba(30, 58, 138, 0.3)',
+            'badge': '0 4px 20px -2px rgba(16, 185, 129, 0.12), 0 2px 6px -1px rgba(15, 23, 42, 0.04)',
           }
         }
       }
@@ -58,13 +59,21 @@
     .hero-surface {
       background-color: #f8fafc;
       background-image: 
-        radial-gradient(at 50% 0%, rgba(30, 64, 175, 0.09) 0px, transparent 65%),
-        radial-gradient(at 85% 20%, rgba(245, 158, 11, 0.06) 0px, transparent 50%),
-        radial-gradient(at 15% 25%, rgba(30, 58, 138, 0.06) 0px, transparent 50%);
+        radial-gradient(at 50% 0%, rgba(30, 64, 175, 0.10) 0px, transparent 65%),
+        radial-gradient(at 85% 20%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
+        radial-gradient(at 15% 25%, rgba(30, 58, 138, 0.07) 0px, transparent 50%);
     }
     .bg-grid-pattern {
       background-image: radial-gradient(rgba(30, 58, 138, 0.11) 1px, transparent 1px);
       background-size: 24px 24px;
+    }
+
+    /* Executive Hero Title Shade & Dimensional Finish */
+    .hero-title-shade {
+      background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 65%, #172554 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 4px 14px rgba(30, 58, 138, 0.14));
     }
 
     /* Smooth card elevation */
@@ -122,7 +131,7 @@
 
       <!-- Desktop Menu -->
       <nav class="hidden md:flex items-center space-x-1 lg:space-x-1.5 text-sm font-semibold text-slate-600">
-        <a href="#home" class="nav-link px-3.5 py-2 rounded-xl hover:text-blue-900 hover:bg-blue-50/70 transition">Home</a>
+        <a href="#home" class="nav-link active-nav px-3.5 py-2 rounded-xl hover:text-blue-900 hover:bg-blue-50/70 transition">Home</a>
         <a href="#about" class="nav-link px-3.5 py-2 rounded-xl hover:text-blue-900 hover:bg-blue-50/70 transition">About Us</a>
         <a href="#products" class="nav-link px-3.5 py-2 rounded-xl hover:text-blue-900 hover:bg-blue-50/70 transition">Products & Services</a>
         <a href="#sourcing" class="nav-link px-3.5 py-2 rounded-xl hover:text-blue-900 hover:bg-blue-50/70 transition">Import & Sourcing</a>
@@ -154,23 +163,43 @@
     </div>
   </header>
 
-  <!-- 1. HOME PAGE -->
-  <section id="home" class="relative py-20 md:py-28 hero-surface bg-grid-pattern overflow-hidden">
+  <!-- 1. HOME PAGE (Protected with scroll-mt-24 so the title is never cut off) -->
+  <section id="home" class="relative pt-12 pb-16 md:pt-16 md:pb-24 scroll-mt-24 hero-surface bg-grid-pattern overflow-hidden">
+    <!-- Subtle Ambient Shade Behind Hero Title -->
+    <div class="pointer-events-none absolute top-6 left-1/2 -translate-x-1/2 w-[340px] sm:w-[560px] h-40 bg-gradient-to-r from-blue-900/10 via-blue-600/10 to-emerald-500/10 blur-3xl rounded-full"></div>
+
     <div class="relative max-w-5xl mx-auto px-6">
       
-      <!-- Titles Centered in Correct Order with Optically Centered Brand Logo Emblem -->
-      <div class="text-center mb-12 reveal">
-        <div class="w-28 h-28 md:w-32 md:h-32 mx-auto mb-7 rounded-3xl bg-white border border-slate-200/90 ring-4 ring-blue-950/[0.04] shadow-logo flex items-center justify-center overflow-hidden">
-          <img src="Logo.jpg" alt="GLOBAL PARTNERS Emblem" class="logo-optical-center">
+      <!-- Titles Centered with Architectural Flanking Design & Dimensional Shade (Logo Removed) -->
+      <div class="text-center mb-9 reveal">
+        <div class="inline-flex items-center justify-center gap-3 sm:gap-5 md:gap-6 mb-2.5">
+          <!-- Left Architectural Wing Accent -->
+          <span class="hidden sm:flex items-center gap-2" aria-hidden="true">
+            <span class="w-10 md:w-20 h-[2px] bg-gradient-to-r from-transparent via-blue-900/35 to-blue-900 rounded-full"></span>
+            <span class="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-blue-900 to-amber-500 rounded-[2px] shadow-sm ring-2 ring-blue-900/10"></span>
+          </span>
+
+          <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-black tracking-tight hero-title-shade py-1">
+            GLOBAL PARTNERS
+          </h1>
+
+          <!-- Right Architectural Wing Accent -->
+          <span class="hidden sm:flex items-center gap-2" aria-hidden="true">
+            <span class="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-amber-500 to-blue-900 rounded-[2px] shadow-sm ring-2 ring-blue-900/10"></span>
+            <span class="w-10 md:w-20 h-[2px] bg-gradient-to-l from-transparent via-blue-900/35 to-blue-900 rounded-full"></span>
+          </span>
         </div>
-        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight mb-3">
-          GLOBAL PARTNERS
-        </h1>
-        <p class="text-xl md:text-2xl font-bold text-blue-900 tracking-wide mb-6">
+
+        <p class="text-xl md:text-2xl font-bold text-blue-900 tracking-wide mb-5">
           - Trade Beyond Boundaries -
         </p>
-        <div class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/90 border border-slate-200/90 shadow-sm">
-          <span class="w-2.5 h-2.5 rounded-full bg-amber-500 ring-4 ring-amber-500/20"></span>
+
+        <!-- Trusted Partner Badge with Secure Emerald Green Indicator -->
+        <div class="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/95 border border-emerald-500/25 shadow-badge">
+          <span class="relative flex h-2.5 w-2.5 shrink-0">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-50"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 ring-4 ring-emerald-500/20"></span>
+          </span>
           <p class="text-xs sm:text-sm md:text-base font-bold tracking-wider text-slate-800 uppercase">
             Your Trusted Partner in Sourcing, Trading & Supply
           </p>
@@ -178,7 +207,7 @@
       </div>
 
       <!-- Writing / Descriptions Aligned to Left -->
-      <div class="reveal bg-white/95 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-7 md:p-9 shadow-soft mb-14 max-w-3xl mx-auto border-l-4 border-l-blue-900 text-left space-y-4">
+      <div class="reveal bg-white/95 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-7 md:p-9 shadow-soft mb-12 max-w-3xl mx-auto border-l-4 border-l-blue-900 text-left space-y-4">
         <p class="text-base md:text-lg text-slate-700 leading-relaxed">
           GLOBAL PARTNERS is a Bangladesh-based sourcing, trading, and supply company providing garment materials, poultry products, and customized machinery sourcing solutions to meet diverse business requirements.
         </p>
@@ -188,7 +217,7 @@
       </div>
 
       <!-- Core Business Areas -->
-      <div class="mb-14 reveal">
+      <div class="mb-12 reveal">
         <div class="flex items-center justify-center gap-3 mb-6">
           <span class="h-px w-12 bg-slate-300"></span>
           <h3 class="text-xs font-extrabold tracking-widest text-blue-900 uppercase text-center">Our Core Business Areas</h3>
@@ -755,7 +784,7 @@
 
               <div>
                 <label for="company-name" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Company / Contact Name</label>
-                <input id="company-name" type="text" name="name" required placeholder="Your Name or Company" class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-900 transition">
+                <input id="company-name" type="text" name="name" required pattern=".*\S+.*" title="Please enter your name or company." placeholder="Your Name or Company" class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-900 transition">
               </div>
               <div>
                 <label for="client-email" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Your Email</label>
@@ -797,7 +826,7 @@
     </div>
   </footer>
 
-  <!-- Interactive Scripts: Mobile Nav, Scroll Spy, Scroll Reveal, & Web3Forms Handler -->
+  <!-- Interactive Scripts: Mobile Nav, Top Home Scroll, Scroll Spy, Scroll Reveal, & Web3Forms Handler -->
   <script>
     // Mobile Menu Toggle
     const btn = document.getElementById('mobile-menu-btn');
@@ -807,6 +836,15 @@
     });
     menu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => menu.classList.add('hidden'));
+    });
+
+    // Ensure clicking any "#home" link scrolls cleanly to the very top of the page
+    document.querySelectorAll('a[href="#home"]').forEach(homeLink => {
+      homeLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        history.pushState(null, null, '#home');
+      });
     });
 
     // Smooth Scroll Reveal
@@ -840,13 +878,30 @@
       });
     }, { passive: true });
 
-    // Web3Forms Inline Submission Handler
+    // Web3Forms Inline Submission Handler with Blank-Space Guard
     const form = document.getElementById('inquiry-form');
     const submitBtn = document.getElementById('submit-btn');
     const formResult = document.getElementById('form-result');
 
     form.addEventListener('submit', function(e) {
       e.preventDefault();
+
+      const nameField = document.getElementById('company-name');
+      const emailField = document.getElementById('client-email');
+      const messageField = document.getElementById('product-specs');
+
+      // Prevent whitespace-only ("gap") submissions
+      if (!nameField.value.trim() || !emailField.value.trim() || !messageField.value.trim()) {
+        formResult.textContent = 'Please fill in all fields with valid information.';
+        formResult.classList.remove('hidden', 'text-emerald-600');
+        formResult.classList.add('text-red-600');
+        return;
+      }
+
+      nameField.value = nameField.value.trim();
+      emailField.value = emailField.value.trim();
+      messageField.value = messageField.value.trim();
+
       const formData = new FormData(form);
       const object = Object.fromEntries(formData);
       const json = JSON.stringify(object);
