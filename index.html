@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GLOBAL PARTNERS | - Trade Beyond Boundaries -</title>
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="Logo.jpg">
+
   <!-- SEO Meta Tags -->
   <meta name="description" content="GLOBAL PARTNERS - Trade Beyond Boundaries -. A Bangladesh-based sourcing, trading, and supply company providing garment materials, poultry products, and customized machinery sourcing solutions.">
   <meta name="keywords" content="global partners, trade beyond boundaries, sourcing, trading, supply, garment materials, poultry products, machinery sourcing, Bangladesh">
@@ -26,9 +29,10 @@
             display: ['Plus Jakarta Sans', 'sans-serif'],
           },
           boxShadow: {
-            'soft': '0 10px 40px -15px rgba(15, 23, 42, 0.07)',
-            'card': '0 4px 20px -2px rgba(15, 23, 42, 0.05)',
-            'glow': '0 10px 30px -5px rgba(30, 58, 138, 0.25)',
+            'soft': '0 12px 42px -12px rgba(15, 23, 42, 0.08)',
+            'card': '0 4px 24px -4px rgba(15, 23, 42, 0.06)',
+            'logo': '0 10px 30px -6px rgba(30, 58, 138, 0.14), 0 2px 6px -1px rgba(15, 23, 42, 0.05)',
+            'glow': '0 10px 30px -5px rgba(30, 58, 138, 0.3)',
           }
         }
       }
@@ -36,16 +40,64 @@
   </script>
 
   <style>
-    /* Subtle architectural grid background for hero & highlights */
+    /* Optical centering for Logo.jpg across all containers */
+    .logo-optical-center {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transform: translateY(8.5%) scale(1.72);
+      transform-origin: center center;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+    .group:hover .logo-optical-center-hover {
+      transform: translateY(8.5%) scale(1.8);
+    }
+
+    /* Banding-free architectural hero mesh & dot pattern */
+    .hero-surface {
+      background-color: #f8fafc;
+      background-image: 
+        radial-gradient(at 50% 0%, rgba(30, 64, 175, 0.09) 0px, transparent 65%),
+        radial-gradient(at 85% 20%, rgba(245, 158, 11, 0.06) 0px, transparent 50%),
+        radial-gradient(at 15% 25%, rgba(30, 58, 138, 0.06) 0px, transparent 50%);
+    }
     .bg-grid-pattern {
-      background-image: radial-gradient(rgba(30, 58, 138, 0.1) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(30, 58, 138, 0.11) 1px, transparent 1px);
       background-size: 24px 24px;
     }
+
+    /* Smooth card elevation */
     .card-hover {
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .card-hover:hover {
       transform: translateY(-4px);
+      box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.1);
+    }
+
+    /* Smooth scroll reveal animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Active nav link styling */
+    .nav-link.active-nav {
+      color: #1e3a8a;
+      background-color: rgba(239, 246, 255, 0.9);
+    }
+
+    /* Controlled resize boundaries for inquiry textarea */
+    .inquiry-textarea {
+      resize: vertical;
+      min-height: 115px;
+      max-height: 220px;
     }
   </style>
 </head>
@@ -55,28 +107,26 @@
   <div class="h-1.5 w-full bg-gradient-to-r from-blue-950 via-blue-700 to-amber-500"></div>
 
   <!-- Navigation / Header -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="#home" class="flex items-center gap-3.5 group">
-        <!-- Brand Emblem -->
-        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-950 to-blue-800 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
-          <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
-          </svg>
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-6 py-3.5 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-4 group">
+        <!-- Official Brand Logo (Optically Centered) -->
+        <div class="w-14 h-14 rounded-2xl bg-white border border-slate-200/90 ring-2 ring-slate-900/[0.03] flex items-center justify-center shadow-sm overflow-hidden group-hover:border-blue-900/40 transition-all shrink-0">
+          <img src="Logo.jpg" alt="GLOBAL PARTNERS Logo" class="logo-optical-center logo-optical-center-hover">
         </div>
         <div>
-          <span class="block font-display text-xl font-black tracking-tight text-blue-950">GLOBAL PARTNERS</span>
+          <span class="block font-display text-xl font-black tracking-tight text-blue-950 group-hover:text-blue-800 transition-colors">GLOBAL PARTNERS</span>
           <p class="text-xs text-slate-500 font-semibold tracking-wide">- Trade Beyond Boundaries -</p>
         </div>
       </a>
 
       <!-- Desktop Menu -->
-      <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-semibold text-slate-600">
-        <a href="#home" class="px-3 py-2 rounded-lg hover:text-blue-900 hover:bg-blue-50/60 transition">Home</a>
-        <a href="#about" class="px-3 py-2 rounded-lg hover:text-blue-900 hover:bg-blue-50/60 transition">About Us</a>
-        <a href="#products" class="px-3 py-2 rounded-lg hover:text-blue-900 hover:bg-blue-50/60 transition">Products & Services</a>
-        <a href="#sourcing" class="px-3 py-2 rounded-lg hover:text-blue-900 hover:bg-blue-50/60 transition">Import & Sourcing</a>
-        <a href="#why-us" class="px-3 py-2 rounded-lg hover:text-blue-900 hover:bg-blue-50/60 transition">Why Choose Us</a>
+      <nav class="hidden md:flex items-center space-x-1 lg:space-x-1.5 text-sm font-semibold text-slate-600">
+        <a href="#home" class="nav-link px-3.5 py-2 rounded-xl hover:text-blue-900 hover:bg-blue-50/70 transition">Home</a>
+        <a href="#about" class="nav-link px-3.5 py-2 rounded-xl hover:text-blue-900 hover:bg-blue-50/70 transition">About Us</a>
+        <a href="#products" class="nav-link px-3.5 py-2 rounded-xl hover:text-blue-900 hover:bg-blue-50/70 transition">Products & Services</a>
+        <a href="#sourcing" class="nav-link px-3.5 py-2 rounded-xl hover:text-blue-900 hover:bg-blue-50/70 transition">Import & Sourcing</a>
+        <a href="#why-us" class="nav-link px-3.5 py-2 rounded-xl hover:text-blue-900 hover:bg-blue-50/70 transition">Why Choose Us</a>
         <a href="#contact" class="ml-2 bg-gradient-to-r from-blue-950 to-blue-800 hover:from-blue-900 hover:to-blue-700 text-white px-5 py-2.5 rounded-xl shadow-sm hover:shadow-glow transition-all flex items-center gap-2">
           <span>Contact Us</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -105,22 +155,22 @@
   </header>
 
   <!-- 1. HOME PAGE -->
-  <section id="home" class="relative py-20 md:py-28 bg-gradient-to-b from-blue-50/70 via-white to-slate-50 bg-grid-pattern overflow-hidden">
-    <!-- Subtle Ambient Glow -->
-    <div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-blue-600/10 blur-3xl rounded-full"></div>
-
+  <section id="home" class="relative py-20 md:py-28 hero-surface bg-grid-pattern overflow-hidden">
     <div class="relative max-w-5xl mx-auto px-6">
       
-      <!-- Titles Centered in Correct Order -->
-      <div class="text-center mb-12">
+      <!-- Titles Centered in Correct Order with Optically Centered Brand Logo Emblem -->
+      <div class="text-center mb-12 reveal">
+        <div class="w-28 h-28 md:w-32 md:h-32 mx-auto mb-7 rounded-3xl bg-white border border-slate-200/90 ring-4 ring-blue-950/[0.04] shadow-logo flex items-center justify-center overflow-hidden">
+          <img src="Logo.jpg" alt="GLOBAL PARTNERS Emblem" class="logo-optical-center">
+        </div>
         <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tight mb-3">
           GLOBAL PARTNERS
         </h1>
-        <p class="text-xl md:text-2xl font-bold text-blue-900 tracking-wide mb-5">
+        <p class="text-xl md:text-2xl font-bold text-blue-900 tracking-wide mb-6">
           - Trade Beyond Boundaries -
         </p>
-        <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-950/5 border border-blue-900/15">
-          <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+        <div class="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-white/90 border border-slate-200/90 shadow-sm">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-500 ring-4 ring-amber-500/20"></span>
           <p class="text-xs sm:text-sm md:text-base font-bold tracking-wider text-slate-800 uppercase">
             Your Trusted Partner in Sourcing, Trading & Supply
           </p>
@@ -128,7 +178,7 @@
       </div>
 
       <!-- Writing / Descriptions Aligned to Left -->
-      <div class="bg-white/90 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-7 md:p-9 shadow-soft mb-14 max-w-3xl mx-auto border-l-4 border-l-blue-900 text-left space-y-4">
+      <div class="reveal bg-white/95 backdrop-blur-sm border border-slate-200/90 rounded-2xl p-7 md:p-9 shadow-soft mb-14 max-w-3xl mx-auto border-l-4 border-l-blue-900 text-left space-y-4">
         <p class="text-base md:text-lg text-slate-700 leading-relaxed">
           GLOBAL PARTNERS is a Bangladesh-based sourcing, trading, and supply company providing garment materials, poultry products, and customized machinery sourcing solutions to meet diverse business requirements.
         </p>
@@ -138,40 +188,40 @@
       </div>
 
       <!-- Core Business Areas -->
-      <div class="mb-14">
+      <div class="mb-14 reveal">
         <div class="flex items-center justify-center gap-3 mb-6">
-          <span class="h-px w-10 bg-slate-300"></span>
+          <span class="h-px w-12 bg-slate-300"></span>
           <h3 class="text-xs font-extrabold tracking-widest text-blue-900 uppercase text-center">Our Core Business Areas</h3>
-          <span class="h-px w-10 bg-slate-300"></span>
+          <span class="h-px w-12 bg-slate-300"></span>
         </div>
 
         <div class="grid md:grid-cols-3 gap-5 text-left">
           <!-- Area 1 -->
-          <a href="#products" class="card-hover p-6 bg-white rounded-2xl border border-slate-200/90 shadow-card hover:border-blue-900/40 flex items-start gap-4 group">
+          <a href="#division-garment" class="card-hover p-6 bg-white rounded-2xl border border-slate-200/90 shadow-card hover:border-blue-900/40 flex items-center gap-4 group">
             <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-900 flex items-center justify-center shrink-0 group-hover:bg-blue-900 group-hover:text-white transition-colors">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
               </svg>
             </div>
             <div>
-              <span class="font-display font-bold text-slate-900 text-base group-hover:text-blue-900 transition-colors">Garment Materials & Printing Supplies</span>
+              <span class="font-display font-bold text-slate-900 text-base group-hover:text-blue-900 transition-colors leading-snug block">Garment Materials & Printing Supplies</span>
             </div>
           </a>
 
           <!-- Area 2 -->
-          <a href="#products" class="card-hover p-6 bg-white rounded-2xl border border-slate-200/90 shadow-card hover:border-blue-900/40 flex items-start gap-4 group">
+          <a href="#division-poultry" class="card-hover p-6 bg-white rounded-2xl border border-slate-200/90 shadow-card hover:border-blue-900/40 flex items-center gap-4 group">
             <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-900 flex items-center justify-center shrink-0 group-hover:bg-blue-900 group-hover:text-white transition-colors">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
               </svg>
             </div>
             <div>
-              <span class="font-display font-bold text-slate-900 text-base group-hover:text-blue-900 transition-colors">Poultry Products & Farm Supplies</span>
+              <span class="font-display font-bold text-slate-900 text-base group-hover:text-blue-900 transition-colors leading-snug block">Poultry Products & Farm Supplies</span>
             </div>
           </a>
 
           <!-- Area 3 -->
-          <a href="#products" class="card-hover p-6 bg-white rounded-2xl border border-slate-200/90 shadow-card hover:border-blue-900/40 flex items-start gap-4 group">
+          <a href="#division-machinery" class="card-hover p-6 bg-white rounded-2xl border border-slate-200/90 shadow-card hover:border-blue-900/40 flex items-center gap-4 group">
             <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-900 flex items-center justify-center shrink-0 group-hover:bg-blue-900 group-hover:text-white transition-colors">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -179,16 +229,15 @@
               </svg>
             </div>
             <div>
-              <span class="font-display font-bold text-slate-900 text-base group-hover:text-blue-900 transition-colors">Machinery Import & Sourcing</span>
+              <span class="font-display font-bold text-slate-900 text-base group-hover:text-blue-900 transition-colors leading-snug block">Machinery Import & Sourcing</span>
             </div>
           </a>
         </div>
       </div>
 
       <!-- Commitment Callout -->
-      <div class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-8 md:p-12 shadow-xl text-center border border-blue-800/40">
-        <div class="pointer-events-none absolute -right-20 -bottom-20 w-72 h-72 bg-blue-500/10 rounded-full blur-2xl"></div>
-        <span class="inline-block px-3.5 py-1 rounded-full bg-amber-400/15 text-amber-300 text-xs font-bold uppercase tracking-widest mb-3">
+      <div class="reveal relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white rounded-3xl p-8 md:p-12 shadow-xl text-center border border-blue-800/40">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-amber-400/15 text-amber-300 text-xs font-bold uppercase tracking-widest mb-3 border border-amber-400/20">
           Our Commitment
         </span>
         <p class="font-display text-2xl md:text-3xl font-extrabold text-white mb-4">
@@ -211,18 +260,18 @@
   </section>
 
   <!-- 2. ABOUT US -->
-  <section id="about" class="py-24 bg-white border-t border-slate-200/80">
+  <section id="about" class="py-24 bg-white border-t border-slate-200/80 scroll-mt-16">
     <div class="max-w-5xl mx-auto px-6">
       
       <!-- Section Title Centered -->
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 reveal">
         <span class="text-xs font-extrabold uppercase tracking-widest text-blue-800 block mb-2">Who We Are</span>
         <h2 class="font-display text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">About GLOBAL PARTNERS</h2>
-        <div class="w-16 h-1 bg-blue-900 mx-auto mt-4 rounded-full"></div>
+        <div class="w-16 h-1 bg-gradient-to-r from-blue-900 to-amber-500 mx-auto mt-4 rounded-full"></div>
       </div>
 
       <!-- Paragraphs Left-Aligned with Clean 1-Line Gaps -->
-      <div class="max-w-3xl mx-auto space-y-5 text-slate-600 text-base md:text-lg leading-relaxed text-left mb-14 bg-slate-50/70 p-8 md:p-10 rounded-2xl border border-slate-200/80">
+      <div class="reveal max-w-3xl mx-auto space-y-5 text-slate-600 text-base md:text-lg leading-relaxed text-left mb-14 bg-slate-50/80 p-8 md:p-10 rounded-2xl border border-slate-200/90 shadow-card">
         <p>
           GLOBAL PARTNERS is a diversified sourcing, trading, and supply company based in Bangladesh. We serve businesses across different industries by providing garment-related materials, poultry products, and machinery sourcing services tailored to customer requirements.
         </p>
@@ -232,15 +281,15 @@
         <p>
           With a flexible approach to product sourcing and supply, we aim to simplify purchasing for our customers while maintaining a strong focus on product suitability, quality, and dependable service.
         </p>
-        <p class="font-medium text-slate-800">
+        <p class="font-semibold text-slate-800 pt-2 border-t border-slate-200/80">
           We believe in building long-term business relationships through integrity, transparency, responsiveness, and mutual trust.
         </p>
       </div>
 
       <!-- Vision & Mission Cards -->
-      <div class="grid md:grid-cols-2 gap-6 mb-14">
-        <div class="card-hover p-8 bg-gradient-to-br from-slate-50 to-white rounded-2xl border border-slate-200 shadow-card text-left relative overflow-hidden">
-          <div class="w-11 h-11 rounded-xl bg-blue-900 text-white flex items-center justify-center mb-5">
+      <div class="grid md:grid-cols-2 gap-6 mb-14 reveal">
+        <div class="card-hover p-8 bg-gradient-to-br from-slate-50 to-white rounded-2xl border border-slate-200/90 shadow-card text-left relative overflow-hidden">
+          <div class="w-11 h-11 rounded-xl bg-blue-900 text-white flex items-center justify-center mb-5 shadow-sm">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -250,8 +299,8 @@
           <p class="text-slate-600 text-sm md:text-base leading-relaxed">To become a trusted business partner for sourcing, trading, and supply solutions across Bangladesh and international markets.</p>
         </div>
 
-        <div class="card-hover p-8 bg-gradient-to-br from-slate-50 to-white rounded-2xl border border-slate-200 shadow-card text-left relative overflow-hidden">
-          <div class="w-11 h-11 rounded-xl bg-blue-900 text-white flex items-center justify-center mb-5">
+        <div class="card-hover p-8 bg-gradient-to-br from-slate-50 to-white rounded-2xl border border-slate-200/90 shadow-card text-left relative overflow-hidden">
+          <div class="w-11 h-11 rounded-xl bg-blue-900 text-white flex items-center justify-center mb-5 shadow-sm">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
@@ -262,27 +311,27 @@
       </div>
 
       <!-- Our Core Values -->
-      <div>
+      <div class="reveal">
         <h3 class="font-display text-xl font-bold text-slate-900 mb-5 text-left">Our Core Values</h3>
         <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
           <div class="card-hover p-4 bg-slate-50 hover:bg-white rounded-xl border border-slate-200 hover:border-blue-900/40 text-sm font-semibold text-slate-800 text-left flex items-center gap-3 shadow-sm">
-            <span class="w-7 h-7 rounded-lg bg-blue-900/10 text-blue-900 flex items-center justify-center shrink-0">✓</span>
+            <span class="w-7 h-7 rounded-lg bg-blue-900/10 text-blue-900 flex items-center justify-center shrink-0 font-bold">✓</span>
             <span>Integrity and transparency</span>
           </div>
           <div class="card-hover p-4 bg-slate-50 hover:bg-white rounded-xl border border-slate-200 hover:border-blue-900/40 text-sm font-semibold text-slate-800 text-left flex items-center gap-3 shadow-sm">
-            <span class="w-7 h-7 rounded-lg bg-blue-900/10 text-blue-900 flex items-center justify-center shrink-0">✓</span>
+            <span class="w-7 h-7 rounded-lg bg-blue-900/10 text-blue-900 flex items-center justify-center shrink-0 font-bold">✓</span>
             <span>Quality and reliability</span>
           </div>
           <div class="card-hover p-4 bg-slate-50 hover:bg-white rounded-xl border border-slate-200 hover:border-blue-900/40 text-sm font-semibold text-slate-800 text-left flex items-center gap-3 shadow-sm">
-            <span class="w-7 h-7 rounded-lg bg-blue-900/10 text-blue-900 flex items-center justify-center shrink-0">✓</span>
+            <span class="w-7 h-7 rounded-lg bg-blue-900/10 text-blue-900 flex items-center justify-center shrink-0 font-bold">✓</span>
             <span>Customer-focused service</span>
           </div>
           <div class="card-hover p-4 bg-slate-50 hover:bg-white rounded-xl border border-slate-200 hover:border-blue-900/40 text-sm font-semibold text-slate-800 text-left flex items-center gap-3 shadow-sm">
-            <span class="w-7 h-7 rounded-lg bg-blue-900/10 text-blue-900 flex items-center justify-center shrink-0">✓</span>
+            <span class="w-7 h-7 rounded-lg bg-blue-900/10 text-blue-900 flex items-center justify-center shrink-0 font-bold">✓</span>
             <span>Competitive pricing</span>
           </div>
           <div class="card-hover p-4 bg-slate-50 hover:bg-white rounded-xl border border-slate-200 hover:border-blue-900/40 text-sm font-semibold text-slate-800 sm:col-span-2 md:col-span-2 text-left flex items-center gap-3 shadow-sm">
-            <span class="w-7 h-7 rounded-lg bg-blue-900/10 text-blue-900 flex items-center justify-center shrink-0">✓</span>
+            <span class="w-7 h-7 rounded-lg bg-blue-900/10 text-blue-900 flex items-center justify-center shrink-0 font-bold">✓</span>
             <span>Long-term business partnerships</span>
           </div>
         </div>
@@ -291,15 +340,15 @@
   </section>
 
   <!-- 3. PRODUCTS & SERVICES -->
-  <section id="products" class="py-24 bg-slate-50 border-t border-slate-200/80">
+  <section id="products" class="py-24 bg-slate-50 border-t border-slate-200/80 scroll-mt-16">
     <div class="max-w-7xl mx-auto px-6">
       
       <!-- Section Header: Title Centered, Descriptive Sentence Left-Aligned -->
-      <div class="max-w-3xl mx-auto mb-16">
+      <div class="max-w-3xl mx-auto mb-16 reveal">
         <div class="text-center mb-5">
           <span class="text-xs font-extrabold uppercase tracking-widest text-blue-800 block mb-2">Portfolio & Divisions</span>
           <h2 class="font-display text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Our Products & Services</h2>
-          <div class="w-16 h-1 bg-blue-900 mx-auto mt-4 rounded-full"></div>
+          <div class="w-16 h-1 bg-gradient-to-r from-blue-900 to-amber-500 mx-auto mt-4 rounded-full"></div>
         </div>
         <p class="text-slate-600 text-base md:text-lg leading-relaxed text-left">
           GLOBAL PARTNERS offers a diverse range of products and sourcing services to meet the requirements of customers across the garment, poultry, and industrial sectors.
@@ -308,15 +357,15 @@
 
       <div class="space-y-16">
         <!-- A. Garment Materials & Printing Supplies -->
-        <div class="bg-white rounded-3xl border border-slate-200/90 shadow-soft p-8 md:p-12 text-left group">
+        <div id="division-garment" class="reveal bg-white rounded-3xl border border-slate-200/90 shadow-soft p-8 md:p-12 text-left group scroll-mt-24">
           <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
             <h3 class="font-display text-2xl md:text-3xl font-black text-slate-900">A. Garment Materials & Printing Supplies</h3>
             <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-900 border border-blue-200">Division 01</span>
           </div>
           
           <!-- Image Placed Directly After Title -->
-          <div class="overflow-hidden rounded-2xl mb-8 border border-slate-100 shadow-sm">
-            <img src="garment-supplies.jpeg" alt="Garment Materials and Printing Supplies" class="w-full h-auto block transform group-hover:scale-[1.01] transition-transform duration-500">
+          <div class="overflow-hidden rounded-2xl mb-8 border border-slate-200/80 shadow-sm bg-slate-50">
+            <img src="garment-supplies.jpeg" alt="Garment Materials and Printing Supplies" loading="lazy" class="w-full h-auto block transform group-hover:scale-[1.01] transition-transform duration-500">
           </div>
           
           <p class="text-slate-600 text-base mb-6 leading-relaxed">
@@ -325,35 +374,35 @@
 
           <h4 class="text-xs font-extrabold text-blue-900 uppercase tracking-wider mb-4 text-left">Our product range includes:</h4>
           <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Screen-printing chemicals</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Hot-melt adhesive powders</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Heat-transfer films</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Different types of vinyl materials</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Garment accessories and production supplies</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Decorative stones and stone-related materials</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Stone paper used in relevant garment applications</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Other garment-related materials according to customer requirements</span>
             </div>
@@ -365,15 +414,15 @@
         </div>
 
         <!-- B. Poultry Products & Farm Supplies -->
-        <div class="bg-white rounded-3xl border border-slate-200/90 shadow-soft p-8 md:p-12 text-left group">
+        <div id="division-poultry" class="reveal bg-white rounded-3xl border border-slate-200/90 shadow-soft p-8 md:p-12 text-left group scroll-mt-24">
           <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
             <h3 class="font-display text-2xl md:text-3xl font-black text-slate-900">B. Poultry Products & Farm Supplies</h3>
             <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-900 border border-blue-200">Division 02</span>
           </div>
           
-          <!-- Image Placed Directly After Title -->
-          <div class="overflow-hidden rounded-2xl mb-8 border border-slate-100 shadow-sm">
-            <img src="poultry-supplies.jpeg" alt="Poultry Products and Farm Supplies" class="w-full h-auto block transform group-hover:scale-[1.01] transition-transform duration-500">
+          <!-- poultry-banner.jpeg Directly After Title -->
+          <div class="overflow-hidden rounded-2xl mb-8 border border-slate-200/80 shadow-sm bg-slate-50">
+            <img src="poultry-banner.jpeg" alt="Poultry Products and Farm Supplies" loading="lazy" class="w-full h-auto block transform group-hover:scale-[1.01] transition-transform duration-500">
           </div>
           
           <p class="text-slate-600 text-base mb-6 leading-relaxed">
@@ -382,31 +431,31 @@
 
           <h4 class="text-xs font-extrabold text-blue-900 uppercase tracking-wider mb-4 text-left">Our product range includes:</h4>
           <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Poultry plastic products</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Poultry feed</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Poultry feed tanks and storage solutions</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Cooling pads for poultry farms</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Glass wool and related insulation materials</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Poultry-farming equipment and accessories</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 sm:col-span-2 md:col-span-2 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 sm:col-span-2 md:col-span-2 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Other poultry-related products based on customer requirements</span>
             </div>
@@ -418,15 +467,15 @@
         </div>
 
         <!-- C. Machinery Import & Sourcing -->
-        <div class="bg-white rounded-3xl border border-slate-200/90 shadow-soft p-8 md:p-12 text-left group">
+        <div id="division-machinery" class="reveal bg-white rounded-3xl border border-slate-200/90 shadow-soft p-8 md:p-12 text-left group scroll-mt-24">
           <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
             <h3 class="font-display text-2xl md:text-3xl font-black text-slate-900">C. Machinery Import & Sourcing</h3>
             <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-blue-50 text-blue-900 border border-blue-200">Division 03</span>
           </div>
           
-          <!-- Updated to machine-banner.jpeg Directly After Title -->
-          <div class="overflow-hidden rounded-2xl mb-8 border border-slate-100 shadow-sm">
-            <img src="machine-banner.jpeg" alt="Machinery Import and Sourcing" class="w-full h-auto block transform group-hover:scale-[1.01] transition-transform duration-500">
+          <!-- machine-banner.jpeg Directly After Title -->
+          <div class="overflow-hidden rounded-2xl mb-8 border border-slate-200/80 shadow-sm bg-slate-50">
+            <img src="machine-banner.jpeg" alt="Machinery Import and Sourcing" loading="lazy" class="w-full h-auto block transform group-hover:scale-[1.01] transition-transform duration-500">
           </div>
           
           <p class="text-slate-600 text-base mb-6 leading-relaxed">
@@ -435,23 +484,23 @@
 
           <h4 class="text-xs font-extrabold text-blue-900 uppercase tracking-wider mb-4 text-left">Our sourcing capabilities include:</h4>
           <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Garment and textile machinery</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Printing and heat-transfer machinery</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Industrial machinery and equipment</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Machinery components and spare parts</span>
             </div>
-            <div class="p-4 bg-slate-50 hover:bg-blue-50/40 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 sm:col-span-2 md:col-span-2 text-left flex items-start gap-2.5 transition">
+            <div class="p-4 bg-slate-50 hover:bg-blue-50/50 rounded-xl border border-slate-200/80 text-sm font-semibold text-slate-800 sm:col-span-2 md:col-span-2 text-left flex items-start gap-2.5 transition">
               <span class="text-blue-800 font-bold">▪</span>
               <span>Other machinery as requested by customers</span>
             </div>
@@ -463,7 +512,7 @@
         </div>
 
         <!-- D. Customized Product Sourcing -->
-        <div class="bg-gradient-to-br from-blue-950 via-slate-900 to-blue-950 text-white p-8 md:p-12 rounded-3xl border border-blue-800/40 shadow-xl text-left relative overflow-hidden">
+        <div class="reveal bg-gradient-to-br from-blue-950 via-slate-900 to-blue-950 text-white p-8 md:p-12 rounded-3xl border border-blue-800/40 shadow-xl text-left relative overflow-hidden">
           <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
             <h3 class="font-display text-2xl md:text-3xl font-black text-white">D. Customized Product Sourcing</h3>
             <span class="px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-400/20 text-amber-300 border border-amber-400/30">Bespoke Solutions</span>
@@ -480,15 +529,15 @@
   </section>
 
   <!-- 4. IMPORT & SOURCING SERVICES -->
-  <section id="sourcing" class="py-24 bg-white border-t border-slate-200/80">
+  <section id="sourcing" class="py-24 bg-white border-t border-slate-200/80 scroll-mt-16">
     <div class="max-w-6xl mx-auto px-6">
       
       <!-- Section Header: Title Centered, Paragraph Left-Aligned -->
-      <div class="max-w-3xl mx-auto mb-14">
+      <div class="max-w-3xl mx-auto mb-14 reveal">
         <div class="text-center mb-5">
           <span class="text-xs font-extrabold uppercase tracking-widest text-blue-800 block mb-2">Global Supply Chain</span>
           <h2 class="font-display text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Import & Sourcing Solutions</h2>
-          <div class="w-16 h-1 bg-blue-900 mx-auto mt-4 rounded-full"></div>
+          <div class="w-16 h-1 bg-gradient-to-r from-blue-900 to-amber-500 mx-auto mt-4 rounded-full"></div>
         </div>
         <p class="text-slate-600 text-base md:text-lg leading-relaxed text-left">
           At GLOBAL PARTNERS, we understand that every business has unique purchasing and operational requirements. Our sourcing services are designed to help customers identify suitable products and suppliers according to their specifications and budgets.
@@ -496,30 +545,30 @@
       </div>
 
       <!-- Our Services Include -->
-      <div class="mb-16">
+      <div class="mb-16 reveal">
         <h3 class="font-display text-xl font-bold text-slate-900 mb-6 text-left">Our Services Include</h3>
         <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5 mb-6">
-          <div class="card-hover p-5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-semibold text-slate-800 text-left flex items-start gap-3.5 shadow-sm">
+          <div class="card-hover p-5 bg-slate-50 border border-slate-200/90 rounded-2xl text-sm font-semibold text-slate-800 text-left flex items-center gap-3.5 shadow-sm">
             <span class="w-8 h-8 rounded-lg bg-blue-900 text-white flex items-center justify-center shrink-0 text-xs font-bold">01</span>
             <span>Product identification and supplier sourcing</span>
           </div>
-          <div class="card-hover p-5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-semibold text-slate-800 text-left flex items-start gap-3.5 shadow-sm">
+          <div class="card-hover p-5 bg-slate-50 border border-slate-200/90 rounded-2xl text-sm font-semibold text-slate-800 text-left flex items-center gap-3.5 shadow-sm">
             <span class="w-8 h-8 rounded-lg bg-blue-900 text-white flex items-center justify-center shrink-0 text-xs font-bold">02</span>
             <span>Machinery sourcing based on customer specifications</span>
           </div>
-          <div class="card-hover p-5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-semibold text-slate-800 text-left flex items-start gap-3.5 shadow-sm">
+          <div class="card-hover p-5 bg-slate-50 border border-slate-200/90 rounded-2xl text-sm font-semibold text-slate-800 text-left flex items-center gap-3.5 shadow-sm">
             <span class="w-8 h-8 rounded-lg bg-blue-900 text-white flex items-center justify-center shrink-0 text-xs font-bold">03</span>
             <span>Garment materials and production supply sourcing</span>
           </div>
-          <div class="card-hover p-5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-semibold text-slate-800 text-left flex items-start gap-3.5 shadow-sm">
+          <div class="card-hover p-5 bg-slate-50 border border-slate-200/90 rounded-2xl text-sm font-semibold text-slate-800 text-left flex items-center gap-3.5 shadow-sm">
             <span class="w-8 h-8 rounded-lg bg-blue-900 text-white flex items-center justify-center shrink-0 text-xs font-bold">04</span>
             <span>Poultry products and equipment sourcing</span>
           </div>
-          <div class="card-hover p-5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-semibold text-slate-800 text-left flex items-start gap-3.5 shadow-sm">
+          <div class="card-hover p-5 bg-slate-50 border border-slate-200/90 rounded-2xl text-sm font-semibold text-slate-800 text-left flex items-center gap-3.5 shadow-sm">
             <span class="w-8 h-8 rounded-lg bg-blue-900 text-white flex items-center justify-center shrink-0 text-xs font-bold">05</span>
             <span>Price and specification coordination</span>
           </div>
-          <div class="card-hover p-5 bg-slate-50 border border-slate-200 rounded-2xl text-sm font-semibold text-slate-800 text-left flex items-start gap-3.5 shadow-sm">
+          <div class="card-hover p-5 bg-slate-50 border border-slate-200/90 rounded-2xl text-sm font-semibold text-slate-800 text-left flex items-center gap-3.5 shadow-sm">
             <span class="w-8 h-8 rounded-lg bg-blue-900 text-white flex items-center justify-center shrink-0 text-xs font-bold">06</span>
             <span>Customized sourcing for special requirements</span>
           </div>
@@ -530,26 +579,26 @@
       </div>
 
       <!-- How It Works -->
-      <div class="mb-16">
+      <div class="mb-16 reveal">
         <h3 class="font-display text-xl font-bold text-slate-900 mb-6 text-left">How It Works</h3>
         <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mb-6">
-          <div class="card-hover p-6 bg-white border-2 border-slate-200/90 hover:border-blue-900 rounded-2xl text-left shadow-card relative">
-            <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-blue-950 text-amber-400 font-display text-lg font-black mb-4">01</span>
+          <div class="card-hover p-6 bg-white border border-slate-200/90 hover:border-blue-900/50 rounded-2xl text-left shadow-card relative">
+            <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-blue-950 text-amber-400 font-display text-lg font-black mb-4 shadow-sm">01</span>
             <h4 class="font-display font-bold text-slate-900 text-base mb-2">Share Your Requirements</h4>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Tell us the product name, specifications, quantity, and intended use.</p>
           </div>
-          <div class="card-hover p-6 bg-white border-2 border-slate-200/90 hover:border-blue-900 rounded-2xl text-left shadow-card relative">
-            <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-blue-950 text-amber-400 font-display text-lg font-black mb-4">02</span>
+          <div class="card-hover p-6 bg-white border border-slate-200/90 hover:border-blue-900/50 rounded-2xl text-left shadow-card relative">
+            <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-blue-950 text-amber-400 font-display text-lg font-black mb-4 shadow-sm">02</span>
             <h4 class="font-display font-bold text-slate-900 text-base mb-2">Explore Sourcing Options</h4>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">We identify suitable products and potential suppliers.</p>
           </div>
-          <div class="card-hover p-6 bg-white border-2 border-slate-200/90 hover:border-blue-900 rounded-2xl text-left shadow-card relative">
-            <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-blue-950 text-amber-400 font-display text-lg font-black mb-4">03</span>
+          <div class="card-hover p-6 bg-white border border-slate-200/90 hover:border-blue-900/50 rounded-2xl text-left shadow-card relative">
+            <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-blue-950 text-amber-400 font-display text-lg font-black mb-4 shadow-sm">03</span>
             <h4 class="font-display font-bold text-slate-900 text-base mb-2">Review the Proposal</h4>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">We discuss specifications, pricing, and applicable delivery arrangements.</p>
           </div>
-          <div class="card-hover p-6 bg-white border-2 border-slate-200/90 hover:border-blue-900 rounded-2xl text-left shadow-card relative">
-            <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-blue-950 text-amber-400 font-display text-lg font-black mb-4">04</span>
+          <div class="card-hover p-6 bg-white border border-slate-200/90 hover:border-blue-900/50 rounded-2xl text-left shadow-card relative">
+            <span class="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-blue-950 text-amber-400 font-display text-lg font-black mb-4 shadow-sm">04</span>
             <h4 class="font-display font-bold text-slate-900 text-base mb-2">Proceed with Confirmation</h4>
             <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">Once the details are agreed upon, we coordinate the next steps.</p>
           </div>
@@ -560,7 +609,7 @@
       </div>
 
       <!-- CTA -->
-      <div class="bg-gradient-to-r from-blue-50 via-indigo-50/60 to-blue-50 border border-blue-200 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-left shadow-sm">
+      <div class="reveal bg-gradient-to-r from-blue-50 via-indigo-50/60 to-blue-50 border border-blue-200 rounded-2xl p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-left shadow-sm">
         <div class="text-left">
           <h4 class="font-display text-xl font-extrabold text-blue-950 mb-1">Looking for a Specific Product or Machine?</h4>
           <p class="text-sm md:text-base text-slate-600">Contact us to discuss your requirements.</p>
@@ -573,15 +622,15 @@
   </section>
 
   <!-- 5. WHY CHOOSE US? -->
-  <section id="why-us" class="py-24 bg-slate-50 border-t border-slate-200/80">
+  <section id="why-us" class="py-24 bg-slate-50 border-t border-slate-200/80 scroll-mt-16">
     <div class="max-w-6xl mx-auto px-6 text-left">
-      <div class="text-center mb-16">
+      <div class="text-center mb-16 reveal">
         <span class="text-xs font-extrabold uppercase tracking-widest text-blue-800 block mb-2">The Global Partners Advantage</span>
         <h2 class="font-display text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight">Why Choose GLOBAL PARTNERS?</h2>
-        <div class="w-16 h-1 bg-blue-900 mx-auto mt-4 rounded-full"></div>
+        <div class="w-16 h-1 bg-gradient-to-r from-blue-900 to-amber-500 mx-auto mt-4 rounded-full"></div>
       </div>
       
-      <div class="grid md:grid-cols-3 gap-6">
+      <div class="grid md:grid-cols-3 gap-6 reveal">
         <div class="card-hover p-7 bg-white rounded-2xl border border-slate-200/90 shadow-card text-left">
           <div class="w-10 h-10 rounded-xl bg-blue-900/10 text-blue-900 flex items-center justify-center mb-4 font-bold">01</div>
           <h3 class="font-display text-lg font-bold text-blue-950 mb-2">Diverse Product Range</h3>
@@ -617,17 +666,17 @@
   </section>
 
   <!-- 6. CONTACT US -->
-  <section id="contact" class="py-24 bg-white border-t border-slate-200/80">
+  <section id="contact" class="py-24 bg-white border-t border-slate-200/80 scroll-mt-16">
     <div class="max-w-5xl mx-auto px-6">
       
       <!-- Contact Header: Title & Subtitle Centered, Explanatory Text Left-Aligned -->
-      <div class="max-w-3xl mx-auto mb-14">
+      <div class="max-w-3xl mx-auto mb-14 reveal">
         <div class="text-center mb-6">
           <span class="text-xs font-extrabold uppercase tracking-widest text-blue-800 block mb-2">Get In Touch</span>
           <h2 class="font-display text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">Contact GLOBAL PARTNERS</h2>
           <p class="text-blue-900 font-bold text-lg">Let’s Discuss Your Business Requirements</p>
         </div>
-        <div class="text-left space-y-3 text-slate-600 text-sm md:text-base leading-relaxed bg-slate-50 p-6 rounded-2xl border border-slate-200/80">
+        <div class="text-left space-y-3 text-slate-600 text-sm md:text-base leading-relaxed bg-slate-50 p-6 md:p-7 rounded-2xl border border-slate-200/90 shadow-card">
           <p>
             Whether you are looking for garment materials, poultry products, industrial supplies, or machinery sourcing, we welcome your inquiries.
           </p>
@@ -637,14 +686,19 @@
         </div>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-10 items-stretch">
+      <div class="grid md:grid-cols-2 gap-10 items-stretch reveal">
         <!-- Direct Corporate Details -->
         <div class="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white p-8 md:p-10 rounded-3xl shadow-xl flex flex-col justify-between text-left border border-blue-900/40">
           <div class="space-y-6">
-            <div>
-              <span class="inline-block px-3 py-1 rounded-full bg-amber-400/15 text-amber-300 text-xs font-bold tracking-widest uppercase">Corporate Profile</span>
-              <h3 class="font-display text-2xl md:text-3xl font-black text-white tracking-tight mt-3">GLOBAL PARTNERS</h3>
-              <p class="text-xs font-bold text-amber-400 tracking-wider mt-0.5">- Trade Beyond Boundaries -</p>
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-2xl bg-white flex items-center justify-center shrink-0 shadow-md overflow-hidden ring-2 ring-white/15">
+                <img src="Logo.jpg" alt="GLOBAL PARTNERS Logo" class="logo-optical-center">
+              </div>
+              <div>
+                <span class="inline-block px-3 py-0.5 rounded-full bg-amber-400/15 text-amber-300 text-[11px] font-bold tracking-widest uppercase">Corporate Profile</span>
+                <h3 class="font-display text-2xl font-black text-white tracking-tight mt-1">GLOBAL PARTNERS</h3>
+                <p class="text-xs font-bold text-amber-400 tracking-wider mt-0.5">- Trade Beyond Boundaries -</p>
+              </div>
             </div>
 
             <div class="border-t border-white/15 pt-5 space-y-1">
@@ -689,29 +743,34 @@
         </div>
 
         <!-- Working Inquiry Form -->
-        <div class="bg-white border border-slate-200/90 p-8 md:p-10 rounded-3xl shadow-soft text-left">
-          <h4 class="font-display text-xl font-extrabold text-slate-900 mb-6">Send a Sourcing Inquiry</h4>
-          <form action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
-            <!-- Web3Forms Access Key for globalpartnersbd1@gmail.com -->
-            <input type="hidden" name="access_key" value="e4aebaab-c213-4d55-85f2-d609ca7b57c4">
-            <input type="hidden" name="subject" value="New Sourcing Inquiry - Global Partners">
+        <div class="bg-white border border-slate-200/90 p-8 md:p-10 rounded-3xl shadow-soft text-left flex flex-col justify-between">
+          <div>
+            <h4 class="font-display text-xl font-extrabold text-slate-900 mb-6">Send a Sourcing Inquiry</h4>
+            <form id="inquiry-form" action="https://api.web3forms.com/submit" method="POST" class="space-y-5">
+              <!-- Web3Forms Access Key & Professional Sender Configuration -->
+              <input type="hidden" name="access_key" value="e4aebaab-c213-4d55-85f2-d609ca7b57c4">
+              <input type="hidden" name="from_name" value="GLOBAL PARTNERS">
+              <input type="hidden" name="subject" value="New Sourcing Inquiry - GLOBAL PARTNERS">
+              <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
-            <div>
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Company / Contact Name</label>
-              <input type="text" name="name" required placeholder="Your Name or Company" class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-900 transition">
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Your Email</label>
-              <input type="email" name="email" required placeholder="client@example.com" class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-900 transition">
-            </div>
-            <div>
-              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Product Specifications, Quantity, Target Price</label>
-              <textarea name="message" rows="4" required placeholder="Describe specifications and order volume..." class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-900 transition"></textarea>
-            </div>
-            <button type="submit" class="w-full bg-gradient-to-r from-blue-950 to-blue-800 hover:from-blue-900 hover:to-blue-700 text-white font-bold py-4 rounded-xl text-sm transition-all shadow-md hover:shadow-glow">
-              SEND AN INQUIRY
-            </button>
-          </form>
+              <div>
+                <label for="company-name" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Company / Contact Name</label>
+                <input id="company-name" type="text" name="name" required placeholder="Your Name or Company" class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-900 transition">
+              </div>
+              <div>
+                <label for="client-email" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Your Email</label>
+                <input id="client-email" type="email" name="email" required placeholder="client@example.com" class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-900 transition">
+              </div>
+              <div>
+                <label for="product-specs" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Product Specifications, Quantity, Target Price</label>
+                <textarea id="product-specs" name="message" rows="4" required placeholder="Describe specifications and order volume..." class="inquiry-textarea w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm leading-relaxed focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-900 transition"></textarea>
+              </div>
+              <button id="submit-btn" type="submit" class="w-full bg-gradient-to-r from-blue-950 to-blue-800 hover:from-blue-900 hover:to-blue-700 text-white font-bold py-4 rounded-xl text-sm transition-all shadow-md hover:shadow-glow">
+                SEND AN INQUIRY
+              </button>
+              <p id="form-result" class="text-xs font-semibold text-center hidden pt-1"></p>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -720,6 +779,9 @@
   <!-- 7. WEBSITE FOOTER -->
   <footer class="bg-slate-950 text-slate-400 py-14 border-t border-slate-800 text-center text-sm">
     <div class="max-w-4xl mx-auto px-6 space-y-3">
+      <div class="w-16 h-16 mx-auto mb-3 rounded-2xl bg-white flex items-center justify-center shadow-md overflow-hidden ring-2 ring-white/10">
+        <img src="Logo.jpg" alt="GLOBAL PARTNERS Logo" class="logo-optical-center">
+      </div>
       <p class="font-display text-white font-extrabold text-lg tracking-wide">
         GLOBAL PARTNERS | <span class="text-amber-400 font-semibold">Trade Beyond Boundaries</span>
       </p>
@@ -735,8 +797,9 @@
     </div>
   </footer>
 
-  <!-- Mobile Navigation Script -->
+  <!-- Interactive Scripts: Mobile Nav, Scroll Spy, Scroll Reveal, & Web3Forms Handler -->
   <script>
+    // Mobile Menu Toggle
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
     btn.addEventListener('click', () => {
@@ -744,6 +807,82 @@
     });
     menu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => menu.classList.add('hidden'));
+    });
+
+    // Smooth Scroll Reveal
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Active Navigation Link Highlighting on Scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+      let current = 'home';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 130;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active-nav');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active-nav');
+        }
+      });
+    }, { passive: true });
+
+    // Web3Forms Inline Submission Handler
+    const form = document.getElementById('inquiry-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const formResult = document.getElementById('form-result');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'SENDING INQUIRY...';
+      formResult.classList.remove('hidden', 'text-emerald-600', 'text-red-600');
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      })
+      .then(async (response) => {
+        let res = await response.json();
+        if (response.status === 200) {
+          formResult.textContent = 'Thank you! Your inquiry has been received by GLOBAL PARTNERS.';
+          formResult.classList.add('text-emerald-600');
+          form.reset();
+        } else {
+          formResult.textContent = res.message || 'Something went wrong. Please try again.';
+          formResult.classList.add('text-red-600');
+        }
+      })
+      .catch(() => {
+        formResult.textContent = 'Unable to send inquiry right now. Please email us directly.';
+        formResult.classList.add('text-red-600');
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'SEND AN INQUIRY';
+        formResult.classList.remove('hidden');
+      });
     });
   </script>
 
