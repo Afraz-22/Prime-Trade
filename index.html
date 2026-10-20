@@ -273,11 +273,41 @@ h3.sub{font-size:1.35rem;margin-bottom:18px}
 .row a{display:block;color:#fcd34d;font-weight:600;text-decoration:none;word-break:break-word;overflow-wrap:anywhere;padding:7px 0}
 .row a:hover{text-decoration:underline}
 .cl>p{font-size:.85rem;font-style:italic;color:#cbd5e1;padding-top:22px;border-top:1px solid rgba(255,255,255,.15)}
-.fm{padding:44px}
-.fm h3{font-size:1.4rem;margin-bottom:24px}
+/* Inquiry form: stage around the card (glow, orbiting border, floating shapes) */
+.fmw{position:relative;display:flex;isolation:isolate}
+.fmw::before{content:"";position:absolute;inset:-12px;z-index:-1;border-radius:36px;pointer-events:none;background:conic-gradient(from var(--a),rgba(30,58,138,.7),rgba(245,158,11,.65),rgba(61,99,214,.65),rgba(30,58,138,.7));filter:blur(34px);opacity:.34;animation:ang 9s linear infinite;transition:opacity .6s}
+.fmw:hover::before,.fmw:focus-within::before{opacity:.62}
+.fmw.sent::before{background:conic-gradient(from var(--a),#10b981,#34d399,#fbbf24,#10b981);opacity:.8}
+.fo{position:absolute;z-index:-1;pointer-events:none}
+.fo1{top:-24px;right:42px;width:48px;height:48px;border:3px solid var(--amber);border-radius:50%;opacity:.75;animation:bob 6s ease-in-out infinite}
+.fo2{left:-14px;bottom:96px;width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,var(--blue),#3d63d6);rotate:45deg;opacity:.85;animation:bob 7s ease-in-out -2s infinite}
+.fo3{right:-14px;top:38%;width:16px;height:16px;border-radius:50%;background:var(--amber);opacity:.85;animation:bob 5s ease-in-out -1s infinite}
+.fd{position:absolute;z-index:-2;width:150px;height:150px;pointer-events:none;background-image:radial-gradient(currentColor 1.7px,transparent 2.2px);background-size:17px 17px;animation:drift 12s ease-in-out infinite alternate}
+.fd1{right:-20px;bottom:-26px;color:rgba(245,158,11,.7)}
+.fd2{left:-20px;top:-26px;color:rgba(30,58,138,.5);animation-delay:-5s}
+@keyframes bob{50%{translate:0 -12px}}
+@keyframes drift{to{translate:10px -10px}}
+.fm{position:relative;flex:1;min-width:0;padding:44px}
+.fm::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s;background:radial-gradient(420px circle at var(--mx,50%) var(--my,0%),rgba(30,58,138,.07),rgba(245,158,11,.04) 45%,transparent 70%)}
+.fm:hover::before{opacity:1}
+.fm::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:2px;pointer-events:none;z-index:2;background:conic-gradient(from var(--a),rgba(30,58,138,.12),var(--blue) 16%,rgba(30,58,138,.12) 36%,rgba(245,158,11,.12) 60%,var(--amber) 80%,rgba(245,158,11,.12));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);mask-composite:exclude;animation:ang 8s linear infinite}
+.fhd{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.fhd .cb{background:var(--blue);color:#fff;box-shadow:0 12px 22px -12px var(--blue);animation:bob 4.5s ease-in-out infinite}
+.fhd .cb::after{content:"";position:absolute;inset:-4px;border-radius:19px;border:2px solid var(--blue);opacity:0;pointer-events:none;animation:rng 3.4s ease-out infinite}
+.fm h3{font-size:1.4rem;margin:0}
 label{display:block;margin:0 0 8px;font-size:.78rem;font-weight:700;color:#334155;letter-spacing:.06em;text-transform:uppercase;transition:color .2s}
+.fm label::before{content:"";display:inline-block;width:0;height:6px;margin-right:0;border-radius:1px;background:var(--amber);rotate:45deg;transition:width .3s var(--ease),margin .3s var(--ease)}
 .fm .f{margin-bottom:20px}
 .fm .f:focus-within label{color:var(--blue)}
+.fm .f:focus-within label::before{width:6px;margin-right:9px}
+.fm .f input,.fm .f textarea{transition:border-color .2s,box-shadow .3s,background .2s,transform .3s var(--ease)}
+.fm .f:focus-within input,.fm .f:focus-within textarea{transform:translateY(-2px);box-shadow:0 0 0 4px rgba(30,58,138,.13),0 16px 28px -18px rgba(30,58,138,.6)}
+input:user-valid,textarea:user-valid{border-color:#34d399}
+.ct.in .fm .f{animation:rise .8s var(--ease) backwards}
+.ct.in .fm .f:nth-of-type(1){animation-delay:.25s}
+.ct.in .fm .f:nth-of-type(2){animation-delay:.35s}
+.ct.in .fm .f:nth-of-type(3){animation-delay:.45s}
+.ct.in .fm .sb{animation:rise .8s var(--ease) .55s backwards}
 input,textarea{width:100%;padding:14px 16px;font:inherit;font-size:1rem;color:#0f172a;background:#f8fafc;border:1px solid #cbd5e1;border-radius:14px;transition:border-color .2s,box-shadow .2s,background .2s}
 textarea{min-height:130px;max-height:240px;resize:vertical;line-height:1.6}
 input:hover,textarea:hover{border-color:#94a3b8}
@@ -286,6 +316,8 @@ input:focus,textarea:focus{outline:none;background:#fff;border-color:var(--blue)
 ::placeholder{color:#94a3b8}
 .sb{position:relative;overflow:hidden;width:100%;border:0;cursor:pointer;padding:17px;border-radius:14px;color:#fff;font:700 .92rem Inter,sans-serif;letter-spacing:.06em;background:linear-gradient(135deg,var(--ink),var(--blue));box-shadow:0 16px 30px -16px var(--blue);transition:transform .25s var(--ease),opacity .2s,box-shadow .25s}
 .sb::before{content:"";position:absolute;top:0;left:-120%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.28),transparent);transform:skewX(-20deg);animation:sweep 4.6s ease-in-out 1s infinite;pointer-events:none}
+.sb:not(.busy)::after{content:"\2192";display:inline-block;margin-left:10px;font-size:1.1em;line-height:1;vertical-align:-1px;transition:transform .3s var(--ease)}
+.sb:hover:not(:disabled)::after{transform:translateX(5px)}
 .sb:hover{transform:translateY(-2px);box-shadow:0 22px 34px -16px var(--blue)}
 .sb:disabled{opacity:.7;cursor:wait;transform:none}
 .sb.busy::after{content:"";display:inline-block;width:15px;height:15px;margin-left:10px;vertical-align:-2px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite}
@@ -380,7 +412,7 @@ footer .cp{margin-top:30px;padding-top:22px;border-top:1px solid #1e293b;font-si
  .js .sh h2::after{width:64px}
 }
 @media print{
- header,.prog,.top,.routes,#net,.orb,.glow,.bar,.skip,.btn::after,.cf{display:none!important}
+ header,.prog,.top,.routes,#net,.orb,.glow,.bar,.skip,.btn::after,.cf,.fo,.fd,.fmw::before,.fm::after{display:none!important}
  *{animation:none!important;transition:none!important}
  .js .rv,.js .stg:not(.in)>*{opacity:1!important;transform:none!important}
  .js .ph img{opacity:1!important}
@@ -407,6 +439,7 @@ footer .cp{margin-top:30px;padding-top:22px;border-top:1px solid #1e293b;font-si
 <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
 <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
 <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></symbol>
 </defs></svg>
 
 <a class="skip" href="#main">Skip to content</a>
@@ -682,8 +715,14 @@ footer .cp{margin-top:30px;padding-top:22px;border-top:1px solid #1e293b;font-si
         <p>We look forward to building a successful business relationship with you.</p>
       </div>
 
+      <div class="fmw">
+      <span class="fd fd1" aria-hidden="true"></span>
+      <span class="fd fd2" aria-hidden="true"></span>
+      <span class="fo fo1" aria-hidden="true"></span>
+      <span class="fo fo2" aria-hidden="true"></span>
+      <span class="fo fo3" aria-hidden="true"></span>
       <div class="cd fm">
-        <h3>Send a Sourcing Inquiry</h3>
+        <div class="fhd"><span class="cb"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-send"/></svg></span><h3>Send a Sourcing Inquiry</h3></div>
         <form id="inquiry-form" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="e4aebaab-c213-4d55-85f2-d609ca7b57c4">
           <input type="hidden" name="from_name" value="GLOBAL PARTNERS">
@@ -695,6 +734,7 @@ footer .cp{margin-top:30px;padding-top:22px;border-top:1px solid #1e293b;font-si
           <button id="submit-btn" class="sb" type="submit">SEND AN INQUIRY</button>
           <p id="form-result" class="fr" role="status" aria-live="polite"></p>
         </form>
+      </div>
       </div>
     </div>
   </div>
@@ -1034,7 +1074,7 @@ footer .cp{margin-top:30px;padding-top:22px;border-top:1px solid #1e293b;font-si
 
   /* Pointer effects (mouse / pen only, motion allowed) */
   if (fine && !reduce) {
-    qa('.card, .core').forEach(function (el) {
+    qa('.card, .core, .fm').forEach(function (el) {
       el.addEventListener('pointermove', function (e) {
         var r = el.getBoundingClientRect();
         var x = e.clientX - r.left, y = e.clientY - r.top;
@@ -1183,6 +1223,11 @@ footer .cp{margin-top:30px;padding-top:22px;border-top:1px solid #1e293b;font-si
             say('Thank you! Your inquiry has been received by GLOBAL PARTNERS.', 'ok');
             form.reset();
             burst(btn);
+            var stage = form.closest('.fmw');
+            if (stage) {
+              stage.classList.add('sent');
+              setTimeout(function () { stage.classList.remove('sent'); }, 2200);
+            }
           } else {
             say(data.message || 'Something went wrong. Please try again.', 'er');
           }
