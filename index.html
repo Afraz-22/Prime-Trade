@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"GLOBAL PARTNERS","slogan":"- Trade Beyond Boundaries -","description":"A Bangladesh-based sourcing, trading, and supply company providing garment materials, poultry products, and customized machinery sourcing solutions.","email":"info@globalpartners-bd.com","founder":{"@type":"Person","name":"MD KHALEDUR RAHMAN"},"address":{"@type":"PostalAddress","streetAddress":"Mirpur","addressLocality":"Dhaka","postalCode":"1216","addressCountry":"BD"}}
+{"@context":"https://schema.org","@type":"Organization","name":"GLOBAL PARTNERS","slogan":"- Trade Beyond Boundaries -","description":"A Bangladesh-based sourcing, trading, and supply company providing garment materials, poultry products, and customized machinery sourcing solutions.","email":["info@globalpartners-bd.com","globalpartnersbd1@gmail.com"],"founder":{"@type":"Person","name":"MD KHALEDUR RAHMAN"},"address":{"@type":"PostalAddress","streetAddress":"Mirpur","addressLocality":"Dhaka","postalCode":"1216","addressCountry":"BD"}}
 </script>
 <script>document.documentElement.classList.add('js');try{history.scrollRestoration='manual'}catch(e){}</script>
 <style>
@@ -72,7 +72,7 @@ header.sc{background:rgba(255,255,255,.96);box-shadow:0 14px 32px -22px rgba(10,
 .bn{display:block;font:800 1.3rem/1.1 var(--hf);letter-spacing:-.01em;color:var(--ink)}
 .bt{display:block;font-size:.76rem;font-weight:600;color:var(--mut);letter-spacing:.02em}
 nav{display:flex;align-items:center;gap:4px;font-size:.9rem;font-weight:600}
-nav a{position:relative;overflow:hidden;padding:9px 14px;border-radius:12px;text-decoration:none;color:#475569;transition:background .2s,color .2s}
+nav a{position:relative;overflow:hidden;white-space:nowrap;padding:9px 14px;border-radius:12px;text-decoration:none;color:#475569;transition:background .2s,color .2s}
 nav a:not(.nc)::after{content:"";position:absolute;left:14px;right:14px;bottom:5px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--blue),var(--amber));transform:scaleX(0);transform-origin:0 50%;transition:transform .4s var(--ease)}
 nav a:not(.nc):hover::after,nav a.on::after{transform:scaleX(1)}
 nav a:hover,nav a.on{color:var(--blue);background:var(--sky)}
@@ -270,7 +270,7 @@ h3.sub{font-size:1.35rem;margin-bottom:18px}
 .row>div{min-width:0}
 .row small{display:block;font-size:.74rem;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
 .row b{display:block;color:#fff;font-weight:500}
-.row a{display:block;color:#fcd34d;font-weight:600;text-decoration:none;word-break:break-word;overflow-wrap:anywhere;padding:2px 0}
+.row a{display:block;color:#fcd34d;font-weight:600;text-decoration:none;word-break:break-word;overflow-wrap:anywhere;padding:7px 0}
 .row a:hover{text-decoration:underline}
 .cl>p{font-size:.85rem;font-style:italic;color:#cbd5e1;padding-top:22px;border-top:1px solid rgba(255,255,255,.15)}
 .fm{padding:44px}
@@ -278,7 +278,7 @@ h3.sub{font-size:1.35rem;margin-bottom:18px}
 label{display:block;margin:0 0 8px;font-size:.78rem;font-weight:700;color:#334155;letter-spacing:.06em;text-transform:uppercase;transition:color .2s}
 .fm .f{margin-bottom:20px}
 .fm .f:focus-within label{color:var(--blue)}
-input,textarea{width:100%;padding:14px 16px;font:inherit;font-size:.95rem;color:#0f172a;background:#f8fafc;border:1px solid #cbd5e1;border-radius:14px;transition:border-color .2s,box-shadow .2s,background .2s}
+input,textarea{width:100%;padding:14px 16px;font:inherit;font-size:1rem;color:#0f172a;background:#f8fafc;border:1px solid #cbd5e1;border-radius:14px;transition:border-color .2s,box-shadow .2s,background .2s}
 textarea{min-height:130px;max-height:240px;resize:vertical;line-height:1.6}
 input:hover,textarea:hover{border-color:#94a3b8}
 input:user-invalid,textarea:user-invalid{border-color:#ef4444;background:#fff7f7}
@@ -292,6 +292,7 @@ input:focus,textarea:focus{outline:none;background:#fff;border-color:var(--blue)
 @keyframes spin{to{transform:rotate(360deg)}}
 .fr{margin-top:14px;text-align:center;font-size:.85rem;font-weight:600;padding:12px 16px;border-radius:12px;animation:pop .45s var(--ease)}
 @keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}}
+.fr:empty{margin:0;padding:0;border:0;height:0;animation:none}
 .fr.ok{color:#047857;background:#ecfdf5;border:1px solid #a7f3d0}
 .fr.er{color:#b91c1c;background:#fef2f2;border:1px solid #fecaca}
 [hidden]{display:none!important}
@@ -336,7 +337,7 @@ footer .cp{margin-top:30px;padding-top:22px;border-top:1px solid #1e293b;font-si
 @media(max-width:1000px){.g4{grid-template-columns:repeat(2,1fr)}.ct{grid-template-columns:1fr}}
 @media(min-width:1001px){.st:not(:last-child)::after{content:"";position:absolute;top:50px;right:-20px;width:20px;border-top:2px dashed #b6c6f3}}
 /* Menu collapses earlier so the header never overflows on tablets / small laptops */
-@media(max-width:1100px){
+@media(max-width:1200px){
  .mb{display:block}
  nav{position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:2px;padding:14px 24px 20px;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 24px 40px -24px rgba(10,21,53,.4);max-height:calc(100vh - 80px);max-height:calc(100dvh - 80px);overflow-y:auto;opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .25s,transform .3s var(--ease),visibility 0s .3s}
  header.open nav{opacity:1;visibility:visible;transform:none;transition-delay:0s}
@@ -692,7 +693,7 @@ footer .cp{margin-top:30px;padding-top:22px;border-top:1px solid #1e293b;font-si
           <div class="f"><label for="client-email">Your Email</label><input id="client-email" type="email" name="email" required autocomplete="email" inputmode="email" placeholder="client@example.com"></div>
           <div class="f"><label for="product-specs">Product Specifications, Quantity, Target Price</label><textarea id="product-specs" name="message" rows="4" required placeholder="Describe specifications and order volume..."></textarea></div>
           <button id="submit-btn" class="sb" type="submit">SEND AN INQUIRY</button>
-          <p id="form-result" class="fr" role="status" aria-live="polite" hidden></p>
+          <p id="form-result" class="fr" role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
@@ -731,7 +732,7 @@ footer .cp{margin-top:30px;padding-top:22px;border-top:1px solid #1e293b;font-si
   var icon = mb ? mb.querySelector('use') : null;
   var toTop = $('toTop');
   var hero = $('home');
-  var MENU_BP = 1100;
+  var MENU_BP = 1200;
 
   /* Mobile menu */
   function setMenu(open) {
@@ -773,6 +774,7 @@ footer .cp{margin-top:30px;padding-top:22px;border-top:1px solid #1e293b;font-si
   function stopGlide() { if (raf) { window.cancelAnimationFrame(raf); raf = 0; } }
   function glide(destFn, instant) {
     stopGlide();
+    moved = true; /* a jump request always ends the hold-at-top */
     var start = curY(), t0 = null, quiet = 0, hard = 0;
     var dist = Math.abs(destFn() - start);
     var dur = (reduce || instant) ? 0 : Math.min(1200, Math.max(500, dist * 0.42));
@@ -1144,11 +1146,11 @@ footer .cp{margin-top:30px;padding-top:22px;border-top:1px solid #1e293b;font-si
   /* Inquiry form */
   var form = $('inquiry-form'), btn = $('submit-btn'), out = $('form-result');
   function say(text, cls) {
-    out.hidden = true;
-    out.textContent = text;
-    out.className = 'fr ' + cls;
+    out.textContent = '';
+    out.className = 'fr';
     void out.offsetWidth; /* restart the pop animation */
-    out.hidden = false;
+    out.className = 'fr ' + cls;
+    out.textContent = text;
   }
   if (form && btn && out) {
     form.addEventListener('submit', function (e) {
@@ -1163,7 +1165,8 @@ footer .cp{margin-top:30px;padding-top:22px;border-top:1px solid #1e293b;font-si
       btn.disabled = true;
       btn.classList.add('busy');
       btn.textContent = 'SENDING INQUIRY...';
-      out.hidden = true;
+      out.textContent = '';
+      out.className = 'fr';
 
       var ctl = 'AbortController' in window ? new AbortController() : null;
       var timer = ctl ? setTimeout(function () { ctl.abort(); }, 20000) : 0;
