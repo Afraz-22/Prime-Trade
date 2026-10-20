@@ -26,7 +26,7 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"GLOBAL PARTNERS","slogan":"- Trade Beyond Boundaries -","description":"A Bangladesh-based sourcing, trading, and supply company providing garment materials, poultry products, and customized machinery sourcing solutions.","email":"info@globalpartners-bd.com","founder":{"@type":"Person","name":"MD KHALEDUR RAHMAN"},"address":{"@type":"PostalAddress","streetAddress":"Mirpur","addressLocality":"Dhaka","postalCode":"1216","addressCountry":"BD"}}
 </script>
-<script>document.documentElement.classList.add('js')</script>
+<script>document.documentElement.classList.add('js');try{history.scrollRestoration='manual'}catch(e){}</script>
 <style>
 @property --a{syntax:'<angle>';inherits:false;initial-value:0deg}
 :root{--ink:#0a1535;--navy:#12286b;--blue:#1e3a8a;--sky:#eaf0ff;--amber:#f59e0b;--gold:#fbbf24;--tx:#334155;--mut:#64748b;--line:#e2e8f0;--bg:#f5f7fc;--r:20px;--sh:0 18px 44px -22px rgba(10,21,53,.32);--ease:cubic-bezier(.16,1,.3,1);--hf:'Bricolage Grotesque',system-ui,-apple-system,'Segoe UI',sans-serif}
@@ -34,7 +34,7 @@
 *{margin:0;-webkit-tap-highlight-color:transparent}
 /* Navigation is handled by the JS glide engine below. It tracks the LIVE target position every frame,
    and banner images reserve their space up-front (aspect-ratio), so nothing can shift the layout and misplace a jump. */
-html{scroll-padding-top:80px;-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-anchor:none}
+html{scroll-padding-top:80px;scroll-behavior:auto;-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-anchor:none}
 body{font:400 16px/1.75 Inter,system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--tx);background:#fff;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;overflow-x:hidden;overflow-anchor:none}
 img,svg{max-width:100%}
 img{display:block}
@@ -797,6 +797,8 @@ footer .cp{margin-top:30px;padding-top:22px;border-top:1px solid #1e293b;font-si
     try { return $(decodeURIComponent(h.slice(1))); } catch (err) { return null; }
   }
 
+  /* Menu / button clicks glide to the section. The URL is NOT changed,
+     so a refresh never jumps back to the last section you visited. */
   qa('a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       var id = a.getAttribute('href').slice(1);
@@ -804,7 +806,6 @@ footer .cp{margin-top:30px;padding-top:22px;border-top:1px solid #1e293b;font-si
       if (!el || e.defaultPrevented || e.metaKey || e.ctrlKey || e.shiftKey || e.button) { return; }
       e.preventDefault();
       glideTo(el);
-      try { history.pushState(null, '', '#' + id); } catch (err) { /* ignore */ }
       if (el.id === 'main') { el.focus({ preventScroll: true }); }
     });
   });
@@ -817,14 +818,70 @@ footer .cp{margin-top:30px;padding-top:22px;border-top:1px solid #1e293b;font-si
     var el = hashEl(location.hash);
     if (el) { glideTo(el); }
   });
-  /* Page opened with a #hash (e.g. site.com/#contact): land exactly, even while images load */
-  if (location.hash.length > 1) {
-    var h0 = hashEl(location.hash);
-    if (h0) {
-      try { if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; } } catch (err) { /* ignore */ }
-      glideTo(h0, true);
-      window.addEventListener('load', function () { glideTo(h0, true); });
+
+  /* Always start at the TOP on refresh / pull-to-refresh / reopened tab.
+     Mobile browsers restore the old scroll position late (after load), so:
+       1) when the page is left or refreshed we reset to the top first, so the
+          browser saves "top" as the position to restore;
+       2) a tab remembers it was already opened (sessionStorage), so a refresh
+          never counts as a fresh visit, even if the browser reports it wrongly;
+       3) we hold the top for a few seconds after load, and stop only when the
+          visitor really scrolls (finger drag, wheel, key), not on a simple touch.
+     Only the very first open of a tab with a shared link like site.com/#contact
+     lands on that section. */
+  try { history.scrollRestoration = 'manual'; } catch (err) { /* ignore */ }
+  var navType = '';
+  try {
+    var nv = performance.getEntriesByType('navigation')[0];
+    navType = nv ? nv.type : '';
+  } catch (err) { /* ignore */ }
+
+  var seen = false;
+  try {
+    seen = sessionStorage.getItem('gp-seen') === '1';
+    sessionStorage.setItem('gp-seen', '1');
+  } catch (err) { /* ignore */ }
+
+  var h0 = (!seen && (navType === 'navigate' || navType === '') && location.hash.length > 1) ? hashEl(location.hash) : null;
+
+  /* Leaving / refreshing: make the browser remember "top" as the saved position */
+  var touchDev = mq('(hover: none), (pointer: coarse)');
+  var KEY = 'gp-y', savedY = 0;
+  try { savedY = parseInt(sessionStorage.getItem(KEY), 10) || 0; } catch (err) { /* ignore */ }
+  /* PC (mouse): a refresh keeps your place. Phone / tablet: a refresh always goes to the top. */
+  var keepY = (!touchDev && navType === 'reload' && savedY > 0) ? savedY : 0;
+  var leave = function () {
+    if (touchDev) { try { window.scrollTo(0, 0); } catch (err) { /* ignore */ } }
+    else { try { sessionStorage.setItem(KEY, String(Math.round(curY()))); } catch (err) { /* ignore */ } }
+  };
+  window.addEventListener('pagehide', leave);
+  window.addEventListener('beforeunload', leave);
+
+  if (h0) {
+    /* Fresh visit via a shared link like site.com/#contact: land exactly, even while images load */
+    glideTo(h0, true);
+    window.addEventListener('load', function () { glideTo(h0, true); });
+  } else {
+    if (location.hash) {
+      try { history.replaceState(null, '', location.pathname + location.search); } catch (err) { /* ignore */ }
     }
+    var moved = false, topEnd = Date.now() + 3000;
+    var userMove = function () { moved = true; };
+    ['touchmove', 'wheel', 'keydown', 'mousedown'].forEach(function (t) {
+      window.addEventListener(t, userMove, { passive: true, once: true });
+    });
+    var toTopNow = function () { if (!moved && Math.abs(curY() - keepY) > 1) { window.scrollTo(0, keepY); } };
+    var holdTop = function () {
+      toTopNow();
+      if (!moved && Date.now() < topEnd) { raf0(holdTop); }
+    };
+    holdTop();
+    [0, 100, 300, 700, 1200, 2000].forEach(function (ms) { setTimeout(toTopNow, ms); });
+    doc.addEventListener('DOMContentLoaded', toTopNow);
+    window.addEventListener('load', function () { toTopNow(); setTimeout(toTopNow, 300); });
+    window.addEventListener('pageshow', function (e) {
+      if (e.persisted && touchDev) { window.scrollTo(0, 0); }
+    });
   }
 
   /* Scroll progress, header state, back-to-top */
